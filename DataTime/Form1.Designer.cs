@@ -42,6 +42,7 @@ namespace DataTime
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@ namespace DataTime
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(260, 219);
+            this.button2.Location = new System.Drawing.Point(145, 318);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -144,7 +145,7 @@ namespace DataTime
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(148, 219);
+            this.button4.Location = new System.Drawing.Point(261, 219);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 14;
@@ -159,11 +160,19 @@ namespace DataTime
             this.dateTimePicker1.Size = new System.Drawing.Size(299, 20);
             this.dateTimePicker1.TabIndex = 15;
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(37, 281);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(299, 20);
+            this.textBox3.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -201,6 +210,7 @@ namespace DataTime
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

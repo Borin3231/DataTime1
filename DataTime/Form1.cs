@@ -18,13 +18,7 @@ namespace DataTime
         {
             InitializeComponent();
         }
-        public class Auth
-        {
-            public static string Id = null;
-            public static string Name = null;
-            public static string Price = null;
-            public static string Date = null;
-        }
+    
         MySqlConnection conn;
 
         private MySqlDataAdapter MyDA = new MySqlDataAdapter();
@@ -119,31 +113,6 @@ namespace DataTime
             GetListUsers();
             ChangeColorDGV();
         }
-        public void DeleteUser()
-        {
-            // string st1 = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            //Формируем строку запроса на добавление строк
-            // string sql_delete_user = "DELETE FROM Prodykti WHERE id=" + st1;
-            //Посылаем запрос на обновление данных
-            //MySqlCommand delete_user = new MySqlCommand(sql_delete_user, conn);
-            try
-            {
-                conn.Open();
-                // delete_user.ExecuteNonQuery();
-                MessageBox.Show("Удаление прошло успешно", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка удаления строки \n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-            finally
-            {
-                conn.Close();
-                //Вызов метода обновления ДатаГрида
-                reload_list();
-            }
-        }
         public void GetListUsers()
         {
             string CommandStr = "SELECT * FROM Prodykti";
@@ -176,14 +145,15 @@ namespace DataTime
             {
                 MessageBox.Show("Дата изготовки", "Ошибка");
                 return;
-            }
-
+            }        
             string gg = data1(dateTimePicker1);
             MySqlCommand command = new MySqlCommand($"INSERT INTO Prodykti (Name,Price,Date) VALUES(@Name, @Price,'{gg}');", conn);
+            
             conn.Open();
-
+          
             command.Parameters.Add("@Name", MySqlDbType.VarChar, 25).Value = textBox1.Text;
             command.Parameters.Add("@Price", MySqlDbType.Float, 25).Value = textBox2.Text;
+            
 
             try
             {
@@ -192,7 +162,6 @@ namespace DataTime
                     MessageBox.Show("Вы успешно добавили");
                     GetListUsers();
                     table.Clear();
-                    ChangeColorDGV();
                 }
                 else
                 {
@@ -207,8 +176,6 @@ namespace DataTime
             {
                 conn.Close();
             }
-
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -217,9 +184,16 @@ namespace DataTime
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {         
+            string id = textBox3.Text;
+            conn.Open();
+            string sql = $"DELETE FROM Prodykti WHERE Id = {id};";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            command.ExecuteNonQuery();
+            conn.Close();
+            table.Clear();
+            GetListUsers();
             ChangeColorDGV();
-            DeleteUser();
         }
 
         private void button4_Click(object sender, EventArgs e)
