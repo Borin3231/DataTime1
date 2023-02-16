@@ -153,7 +153,6 @@ namespace DataTime
           
             command.Parameters.Add("@Name", MySqlDbType.VarChar, 25).Value = textBox1.Text;
             command.Parameters.Add("@Price", MySqlDbType.Float, 25).Value = textBox2.Text;
-            
 
             try
             {
